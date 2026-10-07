@@ -626,7 +626,6 @@ int bitReverse(int x)
   x = ((x >> 2) & m2) | ((x & m2) << 2);
   x = ((x >> 4) & m4) | ((x & m4) << 4);
   x = ((x >> 8) & m8) | ((x & m8) << 8);
-  x = (x << 16) | ((x >> 16) & 0xffff);
-
-  return x;
+  int m16 = 0xFF | (0xFF << 8);
+  return (x << 16) | ((x >> 16) & m16);
 }
